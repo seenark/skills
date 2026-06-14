@@ -64,6 +64,7 @@ npx skills add seenark/skills --all
 | Skill | Description |
 |-------|-------------|
 | [surrealdb-typescript](./skills/surrealdb-typescript/) | Comprehensive type-safe guide for SurrealDB v2 TypeScript SDK — connection management, CRUD with query builders, expression utilities, parameterized queries, transactions, live queries, value types, and full-stack patterns |
+| [rebuild-to-learn](./skills/rebuild-to-learn/) | Stateful course guide for learning repositories by rebuilding simplified core mechanisms, comparing them with production source, and tracking demonstrated understanding |
 
 ## Installation Scope
 
