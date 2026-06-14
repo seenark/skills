@@ -1,12 +1,19 @@
-# skills
+# Seenark Skills
 
-The CLI for the open agent skills ecosystem.
+Curated agent skills for the open skills ecosystem.
 
 <!-- agent-list:start -->
 Supports **OpenCode**, **Claude Code**, **Codex**, **Cursor**, and [50 more](#supported-agents).
 <!-- agent-list:end -->
 
-## Install a Skill
+This repository currently ships two production-ready skills:
+
+| Skill | Best for |
+|-------|----------|
+| [surrealdb-typescript](./skills/surrealdb-typescript/) | Building or reviewing TypeScript/JavaScript code that uses the SurrealDB v2 SDK |
+| [rebuild-to-learn](./skills/rebuild-to-learn/) | Turning a repository into a stateful, hands-on learning course with durable progress tracking |
+
+## Install from this Repository
 
 ```bash
 npx skills add seenark/skills
@@ -21,7 +28,7 @@ npx skills add seenark/skills
 # Full GitHub URL
 npx skills add https://github.com/seenark/skills
 
-# Direct path to a skill in a repo
+# Direct path to a single skill in this repo
 npx skills add https://github.com/seenark/skills/tree/main/skills/surrealdb-typescript
 
 # Local path
@@ -46,8 +53,11 @@ npx skills add ./my-agent-skills
 # List skills in this repository
 npx skills add seenark/skills --list
 
-# Install specific skills
+# Install the SurrealDB TypeScript skill
 npx skills add seenark/skills --skill surrealdb-typescript
+
+# Install the rebuild-to-learn skill
+npx skills add seenark/skills --skill rebuild-to-learn
 
 # Install to specific agents
 npx skills add seenark/skills -a claude-code -a opencode
@@ -63,8 +73,8 @@ npx skills add seenark/skills --all
 
 | Skill | Description |
 |-------|-------------|
-| [surrealdb-typescript](./skills/surrealdb-typescript/) | Comprehensive type-safe guide for SurrealDB v2 TypeScript SDK — connection management, CRUD with query builders, expression utilities, parameterized queries, transactions, live queries, value types, and full-stack patterns |
-| [rebuild-to-learn](./skills/rebuild-to-learn/) | Stateful course guide for learning repositories by rebuilding simplified core mechanisms, comparing them with production source, and tracking demonstrated understanding |
+| [surrealdb-typescript](./skills/surrealdb-typescript/) | Comprehensive type-safe guide for the SurrealDB v2 TypeScript SDK: connection management, CRUD query builders, expression helpers, parameterized queries, transactions, live queries, value types, and full-stack patterns |
+| [rebuild-to-learn](./skills/rebuild-to-learn/) | Stateful repository-learning workflow that teaches by rebuilding simplified mechanisms first, then comparing them against production code while recording demonstrated understanding |
 
 ## Installation Scope
 
