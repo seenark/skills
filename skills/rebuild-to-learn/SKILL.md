@@ -11,9 +11,9 @@ Core principle: build the small thing first, prove understanding, then compare w
 
 ## Required State
 
-Store durable learning state in the target repo under `.learning/`. Never rely on chat memory for course position, learner profile, or completion evidence.
+Store durable course state in the target repo under `.learning/`. Never rely on chat memory for course position, learner profile, storage preferences, or completion evidence.
 
-Required MVP structure:
+Required repo-local state:
 
 ```txt
 .learning/
@@ -24,14 +24,22 @@ Required MVP structure:
   PROGRESS.md
   SESSION-SUMMARY.md
   learning-records/
-  lessons/
-  labs/
 ```
+
+Configurable lesson/lab content location:
+
+- Default: store lesson and lab markdown in the target repo under `.learning/lessons/` and `.learning/labs/`.
+- If the user wants another markdown location, ask for the exact path and use it for lesson/lab files.
+- Obsidian is valid. If the user says "store it in Obsidian", ask for the vault path unless they already gave one.
+- If repo-local lesson/lab files already exist and the user chooses another location, ask whether to keep them in place, copy them, or move them.
+- Record the chosen locations and move policy in `.learning/LEARNER-PROFILE.md`. Do not ask again in later sessions unless the user explicitly asks to change or move them.
 
 Optional when useful:
 
 ```txt
 .learning/
+  lessons/
+  labs/
   GLOSSARY.md
   QUESTIONS.md
   architecture/REPO-MAP.md
@@ -44,13 +52,15 @@ If `.learning/` exists, read it before teaching. If it does not exist, run first
 
 ## First Session Protocol
 
-1. Confirm repo URL/path, learner goal, skill level, preferred language, desired depth, and preferred style: guided exercises, quizzes, explanations, or pair-programming.
-2. Inspect the repo: README, package/build files, entry points, test command, source layout, and obvious architecture.
-3. Create `.learning/` state from the templates.
-4. Write `REPO-INTAKE.md`: purpose, run/test commands, important directories, entry points, concepts, flows, dependencies, difficulty, and risks.
-5. Write `COURSE.md`: modules and lessons that rebuild core mechanisms before source walkthrough.
-6. Write `PROGRESS.md` with current module, lesson, status, and next recommended action.
-7. Recommend Lesson 1. Do not mark anything complete yet.
+1. Confirm repo URL/path, learner goal, skill level, preferred language, desired depth, preferred style, and lesson/lab storage location.
+2. If the user wants an external markdown location such as an Obsidian vault, ask for the exact path unless they already provided it.
+3. Inspect the repo: README, package/build files, entry points, test command, source layout, obvious architecture, and whether lesson/lab files already exist in the project folder.
+4. If repo-local lesson/lab files already exist and the preferred location is elsewhere, ask whether to keep them in place, copy them, or move them.
+5. Create `.learning/` state from the templates and record the storage preference plus any move decision in `LEARNER-PROFILE.md`.
+6. Write `REPO-INTAKE.md`: purpose, run/test commands, important directories, entry points, concepts, flows, dependencies, difficulty, and risks.
+7. Write `COURSE.md`: modules and lessons that rebuild core mechanisms before source walkthrough.
+8. Write `PROGRESS.md` with current module, lesson, status, and next recommended action.
+9. Recommend Lesson 1. Do not mark anything complete yet.
 
 ## New Session Protocol
 
@@ -67,10 +77,13 @@ Then summarize:
 
 - repo being learned,
 - learner goal and preferences,
+- recorded lesson/lab storage location and move policy,
 - current module/lesson/lab,
 - demonstrated understanding,
 - active weak points and open questions,
 - next recommended action.
+
+Reuse the recorded storage preference. Do not ask where to store lessons/labs again unless the user explicitly asks to change or move them.
 
 Ask whether to continue the recommended lesson unless the user already gave a specific command.
 
@@ -150,8 +163,8 @@ Prefer: input, output, transformation, reason for complexity. Avoid line-by-line
 
 | User says | Do this |
 |---|---|
-| `Use rebuild-to-learn on this repo: <url/path>` | Inspect repo, create `.learning/`, write intake/course/progress, recommend Lesson 1. |
-| `Continue my repo learning` | Read `.learning/`, summarize state, continue next recommended action. |
+| `Use rebuild-to-learn on this repo: <url/path>` | Inspect repo, confirm lesson/lab storage location, record it in `.learning/LEARNER-PROFILE.md`, write intake/course/progress, and recommend Lesson 1. |
+| `Continue my repo learning` | Read `.learning/`, recover the recorded storage preference, summarize state, and continue the next recommended action. |
 | `Next lesson` | Load progress, create/load lesson, teach with the loop. |
 | `Explain this file/function` | Explain purpose, concepts, inputs/outputs, course connection, and optionally create a mini exercise. |
 | `Trace how X works` | Follow entry point and calls, update `architecture/EXECUTION-FLOWS.md`, then teach the flow. |
@@ -168,17 +181,20 @@ If the repo contains `.understand-anything/knowledge-graph.json` or the user men
 | Mistake | Fix |
 |---|---|
 | Explaining files before creating state | Create/read `.learning/` first unless user asks for a quick explanation. |
+| Re-asking where lessons/labs go every session | Record the storage preference in `LEARNER-PROFILE.md` and reuse it until the user asks to move it. |
+| Ignoring existing repo lesson/lab files | If the preferred location changes, ask whether to keep, copy, or move existing materials. |
 | Marking lessons complete after an explanation | Require evidence from implementation, answers, debugging, or comparison. |
 | Showing production code too early | Use spoiler levels; start with hints or pseudocode. |
 | Making labs too large | Build one tiny mechanism with clear expected behavior. |
 | Teaching build config first | Start with user-facing behavior and smallest vertical slice unless config is central. |
-| Forgetting continuity | Update `SESSION-SUMMARY.md`, `PROGRESS.md`, and records at session end. |
 
 ## Baseline Failure Counters
 
 | Pressure | Required response |
 |---|---|
 | “I only have an hour, start now.” | Still create durable state; keep Lesson 1 tiny instead of skipping setup. |
+| “I use Obsidian.” | Ask for the exact vault path if missing, then record it in `LEARNER-PROFILE.md`. |
+| “I already have lessons in the repo.” | Ask whether to keep, copy, or move them before changing locations. |
 | “I forgot where we left off.” | Read `.learning/` before choosing the next file. |
 | “Mark the previous lesson complete.” | Refuse without demonstrated evidence; record unknown status. |
 | “Show the full solution so we move faster.” | Prefer hints and ask for the learner's attempt; only reveal full solution under spoiler policy. |
@@ -190,6 +206,8 @@ Stop and correct course when you notice:
 
 - teaching from chat memory while `.learning/` exists,
 - no `MISSION.md`, `COURSE.md`, or `PROGRESS.md` for a new repo,
+- no recorded storage preference after the user mentioned Obsidian, a vault, or another lesson/lab location,
+- moving or duplicating existing lesson/lab files without asking,
 - source walkthrough before toy exercise,
 - full production implementation before an attempt,
 - lesson completion without evidence,

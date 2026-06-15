@@ -45,6 +45,14 @@ Default spoiler level:
 - Preferred session length:
 - How much homework is acceptable:
 
+## Content Storage
+
+- Preferred lesson directory:
+- Preferred lab directory:
+- Existing repo lesson/lab files:
+- Keep, copy, or move policy:
+- Last confirmed with learner:
+
 ## Notes For Future Agent
 
--
+- Reuse the recorded storage preference unless the learner explicitly asks to change or move it.
