@@ -197,7 +197,7 @@ Production comparison does not by itself prove lesson completion. Use the comple
 | `End session` | Update summary, progress, questions, learning records, and next-session prompt. |
 | `Add production comparison for <lesson>` | Read relevant production source, append a self-contained comparison to the lesson file, include concise code excerpts when useful, and update `.learning/SESSION-SUMMARY.md`. |
 | `I do not want to open the codebase while reading` | Embed necessary production snippets in the lesson note and explain them inline. |
-| `I do not know these terms` | Add local vocabulary explanations at the first occurrence and point later repetitions back to that glossary. |
+| `I do not know these terms` | Define each term inline at first occurrence and point later repetitions back to that inline definition. |
 
 ## Understand Anything Integration
 
