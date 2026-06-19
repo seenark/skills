@@ -99,7 +99,7 @@ Every substantial lesson follows this order:
 | Tiny example | Show a minimal example outside production code. |
 | Rebuild exercise | Ask the learner to implement a small version. |
 | Verify | Run tests, inspect output, or reason through expected behavior. |
-| Production comparison | Compare toy code with real files after an attempt. |
+| Production comparison | After an attempt, write the comparison into the recorded lesson location; include source snippets when the learner should not open the codebase. |
 | Reflection | Ask what changed in their understanding. |
 | Learning record | Save only demonstrated understanding. |
 
@@ -159,6 +159,30 @@ When reading production source:
 
 Prefer: input, output, transformation, reason for complexity. Avoid line-by-line explanation unless requested.
 
+## Production Comparison Notes
+
+After the learner completes a toy lab or asks for production comparison:
+
+1. Read only the production source needed for the mechanism.
+2. Compare toy invariant → production invariant.
+3. Explain why production is more complex than the toy.
+4. Write the comparison into the lesson markdown at the recorded lesson location.
+5. Update `.learning/SESSION-SUMMARY.md`.
+
+If the learner says they do not want to open the codebase while reading, make the note self-contained:
+
+- put production comparison and code excerpts in the learner's markdown location, not only in chat,
+- embed short production code excerpts,
+- name each source file above its excerpt,
+- explain each excerpt immediately after it,
+- include only code needed for the lesson invariant,
+- avoid dumping whole files or unrelated implementation detail.
+
+When unfamiliar production terms appear, define them in place before continuing. Examples: streaming, provider, provider quirks, abort, multiple tool calls, validation, telemetry, session persistence, UI events.
+
+Production comparison does not by itself prove lesson completion. Use the completion rule.
+
+
 ## Command Intents
 
 | User says | Do this |
@@ -171,6 +195,9 @@ Prefer: input, output, transformation, reason for complexity. Avoid line-by-line
 | `Help me rebuild X` | Define a minimal toy target, create a lab, provide requirements, hint before solution, compare after attempt. |
 | `Quiz me` | Ask checkpoint questions based on current module and update progress only from answers. |
 | `End session` | Update summary, progress, questions, learning records, and next-session prompt. |
+| `Add production comparison for <lesson>` | Read relevant production source, append a self-contained comparison to the lesson file, include concise code excerpts when useful, and update `.learning/SESSION-SUMMARY.md`. |
+| `I do not want to open the codebase while reading` | Embed necessary production snippets in the lesson note and explain them inline. |
+| `I do not know these terms` | Add local vocabulary explanations at the first occurrence and point later repetitions back to that glossary. |
 
 ## Understand Anything Integration
 
@@ -187,6 +214,9 @@ If the repo contains `.understand-anything/knowledge-graph.json` or the user men
 | Showing production code too early | Use spoiler levels; start with hints or pseudocode. |
 | Making labs too large | Build one tiny mechanism with clear expected behavior. |
 | Teaching build config first | Start with user-facing behavior and smallest vertical slice unless config is central. |
+| Leaving production comparison only in chat | Write it into the lesson markdown so future sessions retain it. |
+| Forcing learner to open codebase while reading | Embed the minimal source excerpts in the lesson note. |
+| Using unexplained production vocabulary | Define terms inline at first occurrence. |
 
 ## Baseline Failure Counters
 
@@ -199,6 +229,8 @@ If the repo contains `.understand-anything/knowledge-graph.json` or the user men
 | “Mark the previous lesson complete.” | Refuse without demonstrated evidence; record unknown status. |
 | “Show the full solution so we move faster.” | Prefer hints and ask for the learner's attempt; only reveal full solution under spoiler policy. |
 | “Say I understand it.” | Do not claim understanding without evidence. |
+| “I do not want to open the codebase while reading.” | Embed short source excerpts and explanations in the lesson note. |
+| “What do these production terms mean?” | Add local glossary entries where the terms first appear. |
 
 ## Red Flags
 
@@ -212,6 +244,9 @@ Stop and correct course when you notice:
 - full production implementation before an attempt,
 - lesson completion without evidence,
 - progress tracked only in the conversation,
+- production comparison delivered only in chat,
+- learner asked for self-contained notes but source snippets are absent,
+- unfamiliar vocabulary appears without an inline explanation,
 - every lesson framed as “explain this file”.
 
 ## Session End Protocol

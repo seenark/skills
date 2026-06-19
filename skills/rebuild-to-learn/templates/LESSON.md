@@ -52,6 +52,38 @@ This relates to these production files:
 
 -
 
+## Production Comparison After Attempt
+
+Define unfamiliar production terms inline where they first appear.
+
+Toy invariant:
+
+```txt
+-
+```
+
+Production invariant:
+
+```txt
+-
+```
+
+Why production is more complex:
+
+-
+
+### Production Code Excerpts
+
+Include only the minimal source snippets needed to understand the invariant.
+
+```ts
+// file: path/to/source.ts
+```
+
+Explanation:
+
+-
+
 ## Checkpoint Questions
 
 1.
