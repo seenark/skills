@@ -68,7 +68,23 @@ Production invariant:
 -
 ```
 
-Why production is more complex:
+Production points:
+
+### <Point Name>
+
+คืออะไร:
+
+-
+
+ทำไปทำไม:
+
+-
+
+เพราะอะไร production ต้องมี:
+
+-
+
+ตัวอย่าง / use case / เปรียบเทียบ:
 
 -
 

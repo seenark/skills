@@ -130,6 +130,8 @@ A lesson is complete only when the learner demonstrates understanding through at
 
 Never mark progress complete because the agent explained something. Evidence beats exposure.
 
+Minor output mismatches do not block completion when the learner demonstrates the invariant and explicitly declines more reruns. Record the mismatch, explain the correction, and continue.
+
 ## Spoiler Policy
 
 Default to Level 1 or Level 2 while the learner is building.
@@ -166,8 +168,9 @@ After the learner completes a toy lab or asks for production comparison:
 1. Read only the production source needed for the mechanism.
 2. Compare toy invariant → production invariant.
 3. Explain why production is more complex than the toy.
-4. Write the comparison into the lesson markdown at the recorded lesson location.
-5. Update `.learning/SESSION-SUMMARY.md`.
+4. For each production point, explain: what it is, why it exists, why production needs it, and one use case, example, or analogy.
+5. Write the comparison into the lesson markdown at the recorded lesson location.
+6. Update `.learning/SESSION-SUMMARY.md`.
 
 If the learner says they do not want to open the codebase while reading, make the note self-contained:
 
@@ -181,6 +184,8 @@ If the learner says they do not want to open the codebase while reading, make th
 When unfamiliar production terms appear, define them in place before continuing. Examples: streaming, provider, provider quirks, abort, multiple tool calls, validation, telemetry, session persistence, UI events.
 
 Production comparison does not by itself prove lesson completion. Use the completion rule.
+
+If the learner requests a teaching style for comparison, preserve it in the lesson note. Common shape: `คืออะไร` → `ทำไปทำไม` → `เพราะอะไร production ต้องมี` → `ตัวอย่าง/use case/เปรียบเทียบ`.
 
 
 ## Command Intents
@@ -198,6 +203,8 @@ Production comparison does not by itself prove lesson completion. Use the comple
 | `Add production comparison for <lesson>` | Read relevant production source, append a self-contained comparison to the lesson file, include concise code excerpts when useful, and update `.learning/SESSION-SUMMARY.md`. |
 | `I do not want to open the codebase while reading` | Embed necessary production snippets in the lesson note and explain them inline. |
 | `I do not know these terms` | Define each term inline at first occurrence and point later repetitions back to that inline definition. |
+| `I understand; this minor mismatch does not need another rerun` | If the invariant is demonstrated, record the mismatch and continue instead of blocking on cosmetic output. |
+| `Explain each production point more deeply` | For each point, write what it is, why it exists, why production needs it, plus an example, use case, or analogy. |
 
 ## Understand Anything Integration
 
@@ -217,6 +224,8 @@ If the repo contains `.understand-anything/knowledge-graph.json` or the user men
 | Leaving production comparison only in chat | Write it into the lesson markdown so future sessions retain it. |
 | Forcing learner to open codebase while reading | Embed the minimal source excerpts in the lesson note. |
 | Using unexplained production vocabulary | Define terms inline at first occurrence. |
+| Blocking on cosmetic mismatches after demonstrated understanding | Record the mismatch, explain the correction, and continue. |
+| Production comparison lacks why/use cases | Add what/why/production reason/example per point. |
 
 ## Baseline Failure Counters
 
@@ -230,7 +239,9 @@ If the repo contains `.understand-anything/knowledge-graph.json` or the user men
 | “Show the full solution so we move faster.” | Prefer hints and ask for the learner's attempt; only reveal full solution under spoiler policy. |
 | “Say I understand it.” | Do not claim understanding without evidence. |
 | “I do not want to open the codebase while reading.” | Embed short source excerpts and explanations in the lesson note. |
-| “What do these production terms mean?” | Add local glossary entries where the terms first appear. |
+| “What do these production terms mean?” | Add inline definitions where the terms first appear. |
+| “I understand; the capitalization fix is not worth another answer.” | Accept if invariant is demonstrated; record the cosmetic mismatch. |
+| “Explain what/why/why production/use case.” | Use that structure for every production point. |
 
 ## Red Flags
 
