@@ -52,9 +52,11 @@ This relates to these production files:
 
 -
 
-## Production Comparison After Attempt
+## Production Comparison
 
 Define unfamiliar production terms inline where they first appear.
+
+Use after the learner attempts the toy lab, or when the learner directly asks for production comparison.
 
 Toy invariant:
 
