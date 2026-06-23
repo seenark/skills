@@ -12,7 +12,7 @@ This repository currently ships three production-ready skills:
 |-------|----------|
 | [surrealdb-typescript](./skills/surrealdb-typescript/) | Building or reviewing TypeScript/JavaScript code that uses the SurrealDB v2 SDK |
 | [rebuild-to-learn](./skills/rebuild-to-learn/) | Turning a repository into a stateful, hands-on learning course with durable progress tracking |
-| [self-contained-obsidian-lessons](./skills/self-contained-obsidian-lessons/) | Generating pinned, self-contained Obsidian source-code lessons with exercises, self-checks, and validation |
+| [lesson-generator](./skills/lesson-generator/) | Generating pinned, self-contained Obsidian source-code courses with lesson plans, exercises, self-checks, and validation |
 
 ## Install from this Repository
 
@@ -60,8 +60,8 @@ npx skills add seenark/skills --skill surrealdb-typescript
 # Install the rebuild-to-learn skill
 npx skills add seenark/skills --skill rebuild-to-learn
 
-# Install the self-contained Obsidian lessons skill
-npx skills add seenark/skills --skill self-contained-obsidian-lessons
+# Install the lesson generator skill
+npx skills add seenark/skills --skill lesson-generator
 
 # Install to specific agents
 npx skills add seenark/skills -a claude-code -a opencode
@@ -79,7 +79,7 @@ npx skills add seenark/skills --all
 |-------|-------------|
 | [surrealdb-typescript](./skills/surrealdb-typescript/) | Comprehensive type-safe guide for the SurrealDB v2 TypeScript SDK: connection management, CRUD query builders, expression helpers, parameterized queries, transactions, live queries, value types, and full-stack patterns |
 | [rebuild-to-learn](./skills/rebuild-to-learn/) | Stateful repository-learning workflow that teaches by rebuilding simplified mechanisms first, then comparing them against production code while recording demonstrated understanding |
-| [self-contained-obsidian-lessons](./skills/self-contained-obsidian-lessons/) | Generates pinned-version Obsidian Markdown source-code lessons with 15 required sections, runnable exercises, self-check tables, anti-patterns, mini projects, support docs, and a validator |
+| [lesson-generator](./skills/lesson-generator/) | Generates pinned-version Obsidian Markdown source-code courses with plan confirmation, 15-section lessons, runnable exercises, self-check tables, anti-patterns, mini projects, support docs, and acceptance validation |
 
 ## Installation Scope
 
