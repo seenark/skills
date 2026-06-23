@@ -6,12 +6,13 @@ Curated agent skills for the open skills ecosystem.
 Supports **OpenCode**, **Claude Code**, **Codex**, **Cursor**, and [50 more](#supported-agents).
 <!-- agent-list:end -->
 
-This repository currently ships two production-ready skills:
+This repository currently ships three production-ready skills:
 
 | Skill | Best for |
 |-------|----------|
 | [surrealdb-typescript](./skills/surrealdb-typescript/) | Building or reviewing TypeScript/JavaScript code that uses the SurrealDB v2 SDK |
 | [rebuild-to-learn](./skills/rebuild-to-learn/) | Turning a repository into a stateful, hands-on learning course with durable progress tracking |
+| [self-contained-obsidian-lessons](./skills/self-contained-obsidian-lessons/) | Generating pinned, self-contained Obsidian source-code lessons with exercises, self-checks, and validation |
 
 ## Install from this Repository
 
@@ -59,6 +60,9 @@ npx skills add seenark/skills --skill surrealdb-typescript
 # Install the rebuild-to-learn skill
 npx skills add seenark/skills --skill rebuild-to-learn
 
+# Install the self-contained Obsidian lessons skill
+npx skills add seenark/skills --skill self-contained-obsidian-lessons
+
 # Install to specific agents
 npx skills add seenark/skills -a claude-code -a opencode
 
@@ -75,6 +79,7 @@ npx skills add seenark/skills --all
 |-------|-------------|
 | [surrealdb-typescript](./skills/surrealdb-typescript/) | Comprehensive type-safe guide for the SurrealDB v2 TypeScript SDK: connection management, CRUD query builders, expression helpers, parameterized queries, transactions, live queries, value types, and full-stack patterns |
 | [rebuild-to-learn](./skills/rebuild-to-learn/) | Stateful repository-learning workflow that teaches by rebuilding simplified mechanisms first, then comparing them against production code while recording demonstrated understanding |
+| [self-contained-obsidian-lessons](./skills/self-contained-obsidian-lessons/) | Generates pinned-version Obsidian Markdown source-code lessons with 15 required sections, runnable exercises, self-check tables, anti-patterns, mini projects, support docs, and a validator |
 
 ## Installation Scope
 
