@@ -6,13 +6,12 @@ Curated agent skills for the open skills ecosystem.
 Supports **OpenCode**, **Claude Code**, **Codex**, **Cursor**, and [50 more](#supported-agents).
 <!-- agent-list:end -->
 
-This repository currently ships three production-ready skills:
+This repository currently ships these active skills:
 
 | Skill | Best for |
 |-------|----------|
+| [complete-guide-course-builder](./skills/complete-guide-course-builder/) | Converting any GitHub open-source repository into a full Thai Complete Guide course with repository analysis, complete lessons, exercises, solutions, AI prompts, and branch checkpoints |
 | [surrealdb-typescript](./skills/surrealdb-typescript/) | Building or reviewing TypeScript/JavaScript code that uses the SurrealDB v2 SDK |
-| [rebuild-to-learn](./skills/rebuild-to-learn/) | Turning a repository into a stateful, hands-on learning course with durable progress tracking |
-| [lesson-generator](./skills/lesson-generator/) | Generating pinned, self-contained Obsidian source-code courses with lesson plans, exercises, self-checks, and validation |
 
 ## Install from this Repository
 
@@ -54,14 +53,11 @@ npx skills add ./my-agent-skills
 # List skills in this repository
 npx skills add seenark/skills --list
 
+# Install the Complete Guide course builder skill
+npx skills add seenark/skills --skill complete-guide-course-builder
+
 # Install the SurrealDB TypeScript skill
 npx skills add seenark/skills --skill surrealdb-typescript
-
-# Install the rebuild-to-learn skill
-npx skills add seenark/skills --skill rebuild-to-learn
-
-# Install the lesson generator skill
-npx skills add seenark/skills --skill lesson-generator
 
 # Install to specific agents
 npx skills add seenark/skills -a claude-code -a opencode
@@ -77,9 +73,8 @@ npx skills add seenark/skills --all
 
 | Skill | Description |
 |-------|-------------|
+| [complete-guide-course-builder](./skills/complete-guide-course-builder/) | Converts a GitHub open-source repository into a full Thai Complete Guide course with repository analysis, module planning, complete lesson files, exercises, solutions, common mistakes, AI coding prompts, branch checkpoints, testing, production, and deployment guidance |
 | [surrealdb-typescript](./skills/surrealdb-typescript/) | Comprehensive type-safe guide for the SurrealDB v2 TypeScript SDK: connection management, CRUD query builders, expression helpers, parameterized queries, transactions, live queries, value types, and full-stack patterns |
-| [rebuild-to-learn](./skills/rebuild-to-learn/) | Stateful repository-learning workflow that teaches by rebuilding simplified mechanisms first, then comparing them against production code while recording demonstrated understanding |
-| [lesson-generator](./skills/lesson-generator/) | Generates pinned-version Obsidian Markdown source-code courses with plan confirmation, 15-section lessons, runnable exercises, self-check tables, anti-patterns, mini projects, support docs, and acceptance validation |
 
 ## Installation Scope
 
