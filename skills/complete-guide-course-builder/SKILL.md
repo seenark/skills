@@ -173,154 +173,193 @@ Create one full lesson for each major repository concept.
 
 Lessons must progress easy to hard.
 
-## Full Thai Course Generation Workflow
+## ขั้นตอนสร้างคอร์สภาษาไทยฉบับสมบูรณ์
 
-1. Clone or inspect the repository.
-2. Run repository inventory and read only relevant files.
-3. Produce `00-repository-analysis.md`.
-4. Decide the module sequence from the project’s actual concepts.
-5. Produce roadmap, module plan, and branch checkpoints.
-6. Generate every module directory.
-7. Generate every `lesson-NN.md` in full detail.
-8. Generate supporting files in `exercises/`, `solutions/`, `ai-prompts/`, `common-mistakes/`, and `final-project/`.
-9. Run the quality checklist against the created course.
-10. Show the generated folder structure and verification notes.
+1. Clone หรือ inspect repository แล้วบันทึก commit/tag ที่ใช้วิเคราะห์
+2. ทำ inventory ของไฟล์และอ่านเฉพาะส่วนที่เกี่ยวข้อง
+3. สร้าง `00-repository-analysis.md` เป็นภาษาไทย
+4. วางลำดับ module จากแนวคิดจริงของ project ไม่ใช่จาก template สำเร็จรูป
+5. สร้าง roadmap, module plan และ branch checkpoints
+6. สร้างทุก module directory และทุก lesson file ให้ครบ
+7. ทำให้ทุกบทอ่านและลงมือทำตามได้ด้วยตัวเอง โดยไม่ต้องเปิด source repository ควบคู่
+8. สร้างไฟล์ใน `exercises/`, `solutions/`, `ai-prompts/`, `common-mistakes/` และ `final-project/` พร้อมเนื้อหาจริง
+9. ตรวจ quality checklist และแสดง folder structure พร้อมหลักฐานการตรวจ
 
-## Language and Teaching Style
+## สัญญาเรื่องภาษาและน้ำเสียง
 
-Write primarily in Thai. Keep English technical terms when natural for developers, including:
+เนื้อหาที่ผู้อ่านเห็นทั้งหมดต้องเป็นภาษาไทยธรรมชาติแบบผู้สอนชาวไทยอธิบายจากความเข้าใจ ไม่ใช่แปลประโยคภาษาอังกฤษทีละคำ
 
-- component
-- route
-- service
-- repository
-- database
-- request
-- response
-- validation
-- deployment
-- production
-- refactor
-- architecture
-- state
-- props
-- API
-- backend
-- frontend
-- middleware
-- authentication
-- authorization
-- environment variable
-- build
-- test
-- debug
+ส่วนต่อไปนี้ต้องเป็นภาษาไทย: ชื่อบท หัวข้อทั่วไป คำอธิบาย การเปรียบเทียบ แบบฝึกหัด เฉลย ข้อผิดพลาดที่พบบ่อย บทสรุป คำแนะนำการใช้ AI และ solution walkthrough
 
-Teaching style:
+คงภาษาอังกฤษเฉพาะสิ่งที่ใช้จริงและควรคงรูปเดิม:
 
-- clear roadmap
-- problem-first explanation
-- beginner-friendly mental model
-- step-by-step coding
-- simple example before real project code
-- naive solution before better solution
-- natural refactoring
-- repetition of important ideas
-- real-world workplace context
-- common junior developer mistakes
-- recap after each section
-- AI coding workflow for modern developers
+- technical terms ที่นักพัฒนาไทยใช้ทั่วไป: component, route, service, repository, database, request, response, validation, deployment, production, refactor, architecture, state, props, API, backend, frontend, middleware, authentication, authorization, environment variable, build, test, debug
+- ชื่อไฟล์ path คำสั่ง CLI ชื่อ package ชื่อ symbol ชื่อ API และข้อความที่โปรแกรมต้องอ่าน
+- prompt สำหรับ AI เมื่อภาษาอังกฤษทำให้ใช้กับเครื่องมือได้ตรงกว่า
 
-Do not copy any instructor’s exact voice or wording.
+ห้ามแปล technical terms แบบตรงตัวจนเกิดคำไทยที่คนทำงานจริงไม่พูด และห้ามปล่อย prose ภาษาอังกฤษไว้เพียงเพราะดู professional กว่า
 
-## Required Lesson Format
+สอนเหมือนมนุษย์กำลังพาเพื่อนร่วมทีมทำงาน: เริ่มจากเหตุผล ใช้ mental model ตัวอย่าง หรือการเปรียบเทียบเมื่อช่วยให้เข้าใจ และเชื่อมกับสถานการณ์ทำงานจริงโดยไม่ยัดตัวอย่างที่ไม่เกี่ยวข้อง
 
-Every lesson file MUST use this exact structure and include complete content under every heading:
+## Quick Reference: สิ่งที่ต้องมีในทุกบท
+
+| สิ่งที่ผู้เรียนต้องได้ | รูปแบบบังคับ |
+|---|---|
+| จุดเริ่มต้น | branch/checkpoint และโครงสร้างไฟล์ที่เกี่ยวข้องก่อนเริ่ม |
+| ขั้นตอนทำ | path, คำสั่ง, code ทีละส่วน และคำอธิบายภาษาไทย |
+| Code จาก repository | คัดเฉพาะส่วนที่จำเป็นมาไว้ในบท พร้อม source path และ commit/tag |
+| สภาพหลังทำ | เนื้อหาเต็มล่าสุดของทุกไฟล์ที่สร้างหรือแก้ในบท |
+| การยืนยันผล | คำสั่ง run/build/test/debug, ผลลัพธ์ที่คาดหวัง และวิธีอ่าน failure |
+| การฝึก | แบบฝึกหัดที่ทำได้จริงและเฉลยสมบูรณ์ |
+
+## รูปแบบบทเรียนที่ต้องใช้
+
+ทุก lesson file ต้องใช้หัวข้อต่อไปนี้ตามลำดับ และต้องมีเนื้อหาจริงใต้ทุกหัวข้อ:
 
 ```md
-# Lesson NN: <clear Thai title with English technical terms when useful>
+# บทที่ NN: <ชื่อไทยที่ชัดเจน โดยคง technical terms ที่จำเป็น>
 
-## Lesson Goal
+## เป้าหมายของบทเรียน
 
-## Start from branch
+## เริ่มจาก branch ไหน
 
-## 1. Start With the Problem
+## โครงสร้างไฟล์ก่อนเริ่ม
 
-## 2. Mental Model
+## 1. เริ่มจากปัญหา
 
-## 3. Simplest Code Example
+## 2. Mental model
 
-## 4. Naive Version
+## 3. ตัวอย่างที่เล็กที่สุด
 
-## 5. Limitation
+## 4. วิธีตรงไปตรงมาแบบแรก
 
-## 6. Better Solution
+## 5. ข้อจำกัดของวิธีแรก
 
-## 7. Real Repository Usage
+## 6. ปรับเป็นวิธีที่ดูแลต่อได้ง่ายขึ้น
 
-## 8. Common Mistakes
+## 7. เชื่อมกับ code ใน repository จริง
 
-## 9. Real-World Context
+## 8. ข้อผิดพลาดที่พบบ่อย
 
-## 10. AI Coding Workflow
+## 9. บริบทการทำงานจริง
 
-## 11. Exercise
+## 10. ใช้ AI ช่วยเขียน code อย่างเข้าใจ
 
-## 12. Solution
+## 11. แบบฝึกหัด
 
-## 13. Recap
+## 12. เฉลยแบบละเอียด
 
-## Finished checkpoint
+## 13. สรุปท้ายบท
+
+## สภาพไฟล์ฉบับสมบูรณ์ท้ายบท
+
+## วิธีตรวจสอบผล
+
+## Checkpoint ที่ควรได้
 ```
 
-### Lesson Heading Requirements
+### ความหมายของแต่ละหัวข้อ
 
-- `Lesson Goal`: explain what the student will understand by the end.
-- `Start from branch`: include `lesson-NN-start` or module-scoped equivalent.
-- `Start With the Problem`: start from pain, not syntax.
-- `Mental Model`: explain simply with analogies when useful.
-- `Simplest Code Example`: smallest working example first.
-- `Naive Version`: simple but imperfect solution; explain why it is okay for learning.
-- `Limitation`: explain when/why the naive version becomes painful.
-- `Better Solution`: refactor naturally, without jumping to advanced architecture too early.
-- `Real Repository Usage`: name actual files and what students should focus on or ignore for now.
-- `Common Mistakes`: explain why each mistake happens and how to avoid it.
-- `Real-World Context`: explain how this appears in company projects.
-- `AI Coding Workflow`: include useful prompts and warnings against blind copying.
-- `Exercise`: practical and directly related to the lesson.
-- `Solution`: complete solution, not “try it yourself”.
-- `Recap`: summarize what was learned and what comes next.
-- `Finished checkpoint`: include `lesson-NN-finished` or module-scoped equivalent.
+- `เป้าหมายของบทเรียน`: บอกสิ่งที่ผู้เรียนทำหรืออธิบายได้เมื่อจบบท
+- `เริ่มจาก branch ไหน`: ระบุ `lesson-NN-start` หรือชื่อ checkpoint แบบ module-scoped
+- `โครงสร้างไฟล์ก่อนเริ่ม`: แสดง file tree ของไฟล์ที่บทนี้ใช้และสถานะที่ผู้เรียนควรมี
+- `เริ่มจากปัญหา`: เริ่มจาก pain ที่เกิดจริง ไม่เริ่มจาก syntax
+- `Mental model`: อธิบาย concept แบบเป็นธรรมชาติ ใช้ analogy เฉพาะเมื่อช่วยให้เข้าใจ
+- `ตัวอย่างที่เล็กที่สุด`: แสดงตัวอย่างที่ทำงานได้ก่อนเชื่อมกับ project จริง
+- `วิธีตรงไปตรงมาแบบแรก`: แสดงทางออกง่ายที่เหมาะสำหรับเรียน พร้อมเหตุผลที่ยังไม่ต้องซับซ้อน
+- `ข้อจำกัดของวิธีแรก`: ให้ผู้เรียนเห็นว่าทำไม code นี้จะเริ่มดูแลยากเมื่อ project โต
+- `ปรับเป็นวิธีที่ดูแลต่อได้ง่ายขึ้น`: refactor ทีละก้าวโดยไม่กระโดดไป architecture สูงเกินบริบท
+- `เชื่อมกับ code ใน repository จริง`: ระบุ source path และ commit/tag ที่วิเคราะห์ พร้อมฝัง excerpt หรือ teaching version ที่จำเป็นไว้ในบท; ห้ามบอกให้ผู้เรียนเปิด repository เพื่อหา code ที่จำเป็นเอง
+- `ข้อผิดพลาดที่พบบ่อย`: อธิบายสาเหตุ อาการ วิธีหลีกเลี่ยง และตัวอย่างผลกระทบ
+- `บริบทการทำงานจริง`: เชื่อม concept กับงานทีม การ review การ debug หรือ production ตามที่เหมาะกับบท
+- `ใช้ AI ช่วยเขียน code อย่างเข้าใจ`: ให้ prompt ที่ใช้ได้จริงและบอกวิธีตรวจคำตอบกับ code/behavior แทนการ copy ตาม
+- `แบบฝึกหัด`: โจทย์ที่ทำได้จากเนื้อหาในบทโดยไม่ต้องเปิด source repository
+- `เฉลยแบบละเอียด`: มี code หรือคำตอบสมบูรณ์ เหตุผล วิธีตรวจ และตัวอย่างแนวทางที่มักผิด
+- `สภาพไฟล์ฉบับสมบูรณ์ท้ายบท`: แสดง full final state ของทุกไฟล์ที่สร้างหรือแก้ในบท แม้บางช่วงจะซ้ำกับ code ที่สอนไปแล้ว
+- `วิธีตรวจสอบผล`: ระบุคำสั่ง run/build/test/debug, expected output และวิธีแยก warning ที่ยอมรับได้ออกจาก failure
+- `Checkpoint ที่ควรได้`: ระบุ `lesson-NN-finished` หรือชื่อ checkpoint แบบ module-scoped
 
-## Code Explanation Rule
+## กฎการใส่ code และ file state
 
-When showing code:
+1. ก่อนทุก code block ให้ระบุ path ของไฟล์หรือระบุว่าเป็นคำสั่ง CLI
+2. สอนด้วย code block ขนาดเล็ก เรียงตามขั้นที่ผู้เรียนพิมพ์จริง
+3. หลังทุก block อธิบายเป็นภาษาไทยว่า code ทำอะไร ทำไมต้องมี ถ้าเอาออกจะเกิดอะไร และ beginner มักพลาดอย่างไร
+4. Code ทุกส่วนที่จำเป็นต่อ compile, run, test หรือ debug ต้องอยู่ในคอร์ส ห้ามแทนด้วยลิงก์หรือคำสั่งว่า “เปิด repository แล้วดูเอง”
+5. หาก upstream file ใหญ่มาก ให้สร้าง teaching version ที่เล็กแต่ runnable ก่อน แล้วค่อยแสดง excerpt จาก upstream ที่จำเป็นพร้อม context ครบ
+6. ท้ายบทต้องรวม full final state ของทุกไฟล์ที่แตะในบท ผู้เรียนต้อง copy หรือพิมพ์ตามแล้วได้ state เดียวกับ checkpoint ได้
+7. ไฟล์ที่ไม่ได้แก้ในบทไม่ต้องคัดซ้ำ แต่ต้องบอก dependency และชี้ไปบทก่อนหน้าที่มี full state ของไฟล์นั้น
 
-1. show a small code block
-2. explain it in Thai
-3. explain why it exists
-4. explain what happens if it is removed
-5. explain common mistakes
-6. continue to the next code block
+## Red Flags: หยุดและแก้ก่อนสร้างไฟล์ต่อ
 
-Never paste a huge code block without explanation.
+- หัวข้อที่ผู้เรียนเห็นเป็น `Common Mistakes`, `Solution`, `Lesson Goal`, `Expected behavior` หรือ prose ภาษาอังกฤษอื่นที่ไม่ใช่ technical term
+- บทเรียนบอกให้เปิด source repository หรือคลิกลิงก์เพื่อหา code ที่จำเป็นต่อขั้นตอน
+- มี code snippet ระหว่างสอน แต่ไม่มี full final state ของไฟล์ที่แตะ
+- ผู้เรียนไม่มี path, คำสั่ง run/build/test/debug หรือ expected result ที่ใช้ยืนยันงานของตน
+- ใช้คำว่า “ดูไฟล์เดิม” หรือ “ทำเหมือน repository” โดยไม่แสดงเนื้อหาให้ครบ
+- ลดรายละเอียดเพราะ upstream file ยาว โดยไม่สร้าง teaching version ที่ runnable
+- สร้าง script ที่เอาไว้ generate คอร์สแทนการเขียน course files จริง เมื่อ agent มีสิทธิ์ write output directory; ให้เขียนไฟล์จริงตาม output structure โดยตรง
 
-## Refactoring Teaching Rule
+พบข้อใดข้อหนึ่ง ให้หยุดสร้างคอร์สและแก้บท/ไฟล์นั้นให้ครบก่อนดำเนินการต่อ
 
-Teach architecture by letting students feel the problem first:
+| ข้ออ้างที่มักเกิด | ความจริงที่ต้องทำ |
+|---|---|
+| “หัวข้ออังกฤษดู professional กว่า” | ผู้เรียนต้องได้หัวข้อและ prose ไทยธรรมชาติ; คงอังกฤษเฉพาะ technical terms และข้อความที่เครื่องมือต้องใช้ |
+| “ให้ลิงก์ repository ก็พอ” | ลิงก์เป็นแหล่งอ้างอิงได้ แต่ไม่แทน code, path หรือ file state ที่ผู้เรียนต้องใช้ทำตาม |
+| “ไฟล์ยาวเกินกว่าจะใส่” | สอนด้วย block เล็กแล้วรวม final state ของไฟล์ที่แตะ; สร้าง teaching version ถ้าจำเป็น |
+| “ส่ง script สร้างคอร์สให้แทนได้” | เมื่อเขียนไฟล์ได้ ต้องสร้าง course files ตาม output structure โดยตรง |
+
+## ตัวอย่างรูปแบบที่ถูกต้อง
+
+ไม่ถูกต้อง: “เปิด `src/routes/health.ts` ใน repository แล้วเพิ่ม route ตามนี้” เพราะผู้เรียนไม่มี state เดิมของไฟล์
+
+ถูกต้อง: เริ่มจากระบุ path, แสดง code ที่เพิ่มทีละส่วน, อธิบาย และจบบทด้วยไฟล์เต็ม:
+
+````md
+### ไฟล์: `src/routes/health.ts`
+
+```ts
+router.get("/health", (_request, response) => {
+  response.json({ status: "ok" });
+});
+```
+
+`router.get` ผูก handler กับ request แบบ `GET` ที่ path `/health` ถ้าตัด handler นี้ออก server จะตอบ `404` เมื่อระบบ monitoring เรียก endpoint นี้
+
+### สภาพไฟล์ฉบับสมบูรณ์ท้ายบท
+
+#### `src/routes/health.ts`
+
+```ts
+import { Router } from "express";
+
+export const healthRouter = Router();
+
+healthRouter.get("/health", (_request, response) => {
+  response.json({ status: "ok" });
+});
+```
+````
+
+ตัวอย่างนี้เป็นรูปแบบการสอน ไม่ใช่ข้ออ้างว่า upstream repository ทุกแห่งใช้ Express หรือมีไฟล์นี้จริง.
+
+## กฎการสอน Refactor
+
+ให้ผู้เรียนรู้สึกถึงปัญหาก่อน แล้วค่อยปรับตามลำดับ:
 
 ```txt
-Working code
-→ messy code
-→ notice the problem
+code ที่ทำงานได้
+→ code เริ่มรกหรือซ้ำ
+→ เห็นต้นทุนของการดูแล
 → extract function
 → extract module
 → extract service
-→ add validation
-→ add error handling
-→ add tests
+→ เพิ่ม validation
+→ เพิ่ม error handling
+→ เพิ่ม test
 ```
 
-Do not begin with advanced architecture unless the lesson is explicitly in the architecture deep-dive section and prior lessons have built the context.
+อย่าเริ่มด้วย architecture ขั้นสูง เว้นแต่เป็นบท architecture deep-dive และบทก่อนหน้าได้สร้างบริบทที่จำเป็นครบแล้ว.
+
 
 ## Branch and Checkpoint System
 
@@ -416,148 +455,145 @@ complete-guide/
 
 Supporting directories must contain useful files, not empty placeholders.
 
-## Supporting File Requirements
+## ข้อกำหนดของไฟล์ประกอบ
+
+ชื่อ directory ตาม output contract คงเป็น `exercises/`, `solutions/`, `ai-prompts/`, `common-mistakes/` และ `final-project/` เพื่อให้ structure คงที่ แต่ชื่อเอกสาร หัวข้อ และคำอธิบายภายในต้องเป็นภาษาไทยธรรมชาติ
 
 ### `exercises/`
 
-Include exercise collections by module or lesson. Each exercise must state:
+จัดโจทย์ตาม module หรือบทเรียน แต่ละโจทย์ต้องมี:
 
-- goal
-- starting point
-- task
-- expected behavior
-- hints
-- related lesson
+- เป้าหมายของการฝึก
+- จุดเริ่มต้นและไฟล์ที่ผู้เรียนควรมีอยู่แล้ว
+- งานที่ต้องทำเป็นภาษาไทยชัดเจน
+- พฤติกรรมหรือผลลัพธ์ที่คาดหวัง
+- คำใบ้ที่ช่วยคิดโดยไม่เฉลยก่อนเวลา
+- บทเรียนที่เกี่ยวข้อง
+- คำสั่งตรวจสอบผลเมื่อโจทย์มี code ที่รันได้
 
 ### `solutions/`
 
-Include complete solutions for exercises. Explain:
+ให้เฉลยครบทุก exercise เป็นภาษาไทย โดยมี:
 
-- final code or answer
-- why it works
-- common wrong solutions
-- how to verify it
+- คำตอบหรือ code ฉบับสมบูรณ์
+- path และ full final state ของไฟล์ที่เฉลยสร้างหรือแก้
+- เหตุผลว่า code ทำงานอย่างไรและทำไมเลือกวิธีนี้
+- ตัวอย่างวิธีที่มักผิด พร้อมผลที่ตามมา
+- คำสั่ง verify และผลลัพธ์ที่คาดหวัง
 
 ### `ai-prompts/`
 
-Include reusable Thai/English prompt templates for:
+รวบรวม prompt ใช้ซ้ำสำหรับอธิบายไฟล์ทีละบรรทัด ทำความเข้าใจ project trace request/response flow เสนอ refactor ที่ปลอดภัย สร้าง test debug error และ review architecture
 
-- explaining files line by line
-- identifying project purpose
-- tracing request/response flow
-- suggesting safe refactors
-- generating tests
-- debugging errors
-- reviewing architecture
-
-Each prompt must include a warning about not copying blindly.
+ตัว prompt อาจเป็นไทยหรืออังกฤษตามความเหมาะสมกับเครื่องมือ แต่คำอธิบายว่าใช้เมื่อไร input ที่ต้องให้ AI วิธีตรวจคำตอบ และคำเตือนไม่ให้ copy แบบไม่เข้าใจ ต้องเป็นภาษาไทย
 
 ### `common-mistakes/`
 
-Group common mistakes by topic. Each entry must explain:
+จัดข้อผิดพลาดตามหัวข้อ และอธิบายแต่ละข้อเป็นภาษาไทย:
 
-- symptom
-- why it happens
-- how to debug
-- safe fix
-- prevention habit
+- อาการที่ผู้เรียนเห็น
+- สาเหตุที่มักทำให้เกิด
+- วิธี debug แบบเป็นขั้นตอน
+- วิธีแก้ที่ปลอดภัย
+- พฤติกรรมป้องกันในงานจริง
+- code หรือ command ตัวอย่างเมื่อจำเป็นต่อการทำตาม
 
 ### `final-project/`
 
-Include a challenge that asks the learner to extend or rebuild part of the project. Include:
+ให้โจทย์ที่ต่อยอดหรือ rebuild ส่วนสำคัญของ project โดยมี:
 
-- requirements
-- acceptance criteria
-- suggested branch plan
-- hints
-- complete reference solution or solution walkthrough
+- โจทย์และบริบทการใช้งานเป็นภาษาไทย
+- requirements และ acceptance criteria ที่ตรวจได้
+- branch plan
+- โครงสร้างไฟล์เริ่มต้นและไฟล์ฉบับเต็มที่ผู้เรียนต้องสร้าง
+- คำใบ้เป็นลำดับจากน้อยไปมาก
+- เฉลยหรือ solution walkthrough ภาษาไทย พร้อม full final state และคำสั่ง verify
 
 ## Quality Checklist
 
-Before finishing, verify the course:
+ก่อนจบ ให้ตรวจคอร์สตามรายการนี้:
 
-- [ ] Starts from the problem.
-- [ ] Every section explains why.
-- [ ] Written mainly in Thai.
-- [ ] English technical terms are kept where useful.
-- [ ] Simple example appears before real project code.
-- [ ] Lessons are ordered from easy to hard.
-- [ ] Students are told where they are in the course.
-- [ ] Every lesson has a recap.
-- [ ] Every lesson has an exercise.
-- [ ] Every exercise has a complete solution.
-- [ ] Common mistakes are explained.
-- [ ] Real-world workplace examples are included.
-- [ ] AI coding workflows are included.
-- [ ] Branch checkpoints are prepared.
-- [ ] Students can run or reason about the code after each lesson.
-- [ ] Students can compare their code with finished checkpoints.
-- [ ] Every lesson is fully written, not only outlined.
-- [ ] No TODO placeholders remain.
-- [ ] No “continue in next lesson” placeholders remain.
+- [ ] เริ่มจากปัญหาและอธิบายเหตุผลของแต่ละส่วน
+- [ ] หัวข้อทั่วไป ร้อยแก้ว แบบฝึกหัด เฉลย และ common mistakes เป็นภาษาไทยธรรมชาติ
+- [ ] คง technical terms, code identifiers, path และ CLI commands ที่ควรเป็นภาษาอังกฤษโดยไม่แปลจนแปลก
+- [ ] ไม่มี paragraph ภาษาอังกฤษที่ไม่ใช่ code, output, prompt หรือ technical term ที่จำเป็น
+- [ ] มีตัวอย่างเล็กก่อนเชื่อมกับ code ใน repository จริง
+- [ ] บทเรียนเรียงจากง่ายไปยากและบอกตำแหน่งของผู้เรียนในคอร์ส
+- [ ] ทุกบทมี mental model, บริบทงานจริง และ recap
+- [ ] ทุกบทแสดง file tree, path, คำสั่ง และ code ที่จำเป็นโดยไม่พึ่งให้ผู้เรียนเปิด source repository คู่กัน
+- [ ] ทุกไฟล์ที่สร้างหรือแก้ในบทมี full final state ท้ายบท
+- [ ] ทุกบทมี run/build/test/debug command, expected result และ finished checkpoint
+- [ ] ทุกบทมีแบบฝึกหัดและเฉลยสมบูรณ์ที่ตรวจได้
+- [ ] common mistakes มีสาเหตุ วิธี debug วิธีแก้ และวิธีป้องกัน
+- [ ] AI coding workflow สอนให้ตรวจคำตอบ ไม่ copy แบบไม่เข้าใจ
+- [ ] branch checkpoints ครบและเทียบ code ได้
+- [ ] ไม่มี TODO, placeholder, outline-only lesson หรือข้อความให้รอตอนถัดไป
 
-## Example Usage
+## ตัวอย่างการใช้งาน
 
-User:
+ผู้ใช้:
 
 ```txt
-Use complete-guide-course-builder to create a Thai Complete Guide course for https://github.com/tinyhttp/tinyhttp.
-Write files to ./complete-guide.
-Target learner: junior TypeScript backend developer.
+ใช้ complete-guide-course-builder สร้างคอร์ส Complete Guide ภาษาไทยจาก https://github.com/tinyhttp/tinyhttp
+เขียนไว้ที่ ./complete-guide
+กลุ่มผู้เรียน: junior TypeScript backend developer
+ทุกบทต้องมี code และไฟล์ฉบับเต็มท้ายบท เพื่อให้เรียนโดยไม่ต้องเปิด repository คู่กัน
 ```
 
-Agent response pattern:
+รูปแบบการตอบและการทำงานของ agent:
 
 ```txt
-Using complete-guide-course-builder to turn the repository into a full Thai Complete Guide course.
-I will inspect the repository first, generate repository analysis, then write the full course files under ./complete-guide.
+กำลังใช้ complete-guide-course-builder เพื่อสร้างคอร์ส Complete Guide ภาษาไทยแบบทำตามได้เอง
+จะวิเคราะห์ repository ที่ระบุและ commit/tag ที่ใช้ก่อน จากนั้นสร้างไฟล์คอร์สครบใต้ ./complete-guide
+ทุกบทจะมี path, คำสั่ง, code ทีละขั้น, ไฟล์ฉบับเต็มท้ายบท และวิธีตรวจสอบผล
 ```
 
-Then the agent creates the file structure and writes complete lessons.
+จากนั้น agent ต้องสร้าง file structure และเขียนบทเรียนครบทั้งหมด ไม่ถามว่าต้องการให้สร้างบทถัดไปหรือไม่
 
-## Testing Checklist With One Sample Repository
+## Checklist ทดสอบกับ Sample Repository
 
-Use a small public repository for a smoke test, for example:
+ใช้ repository ขนาดเล็ก เช่น:
 
 ```txt
 https://github.com/octocat/Hello-World
 ```
 
-Test the skill by verifying the generated course has:
+ตรวจว่าคอร์สที่สร้างมี:
 
 - [ ] `complete-guide/00-repository-analysis.md`
 - [ ] `complete-guide/01-course-roadmap.md`
 - [ ] `complete-guide/02-module-plan.md`
 - [ ] `complete-guide/03-branch-checkpoints.md`
-- [ ] at least one module directory under `complete-guide/modules/`
-- [ ] complete lesson files using all required lesson headings
-- [ ] Thai explanations in every lesson
-- [ ] code or file-content explanation where the repository contains code/content
-- [ ] exercises and complete solutions
-- [ ] AI prompt files
-- [ ] common mistakes files
-- [ ] final project files
-- [ ] no TODO placeholders
-- [ ] no outline-only lessons
-- [ ] generated folder structure can be shown with a directory listing
+- [ ] module อย่างน้อยหนึ่ง directory ใต้ `complete-guide/modules/`
+- [ ] lesson files ที่มีหัวข้อบังคับครบและมีคำอธิบายภาษาไทยธรรมชาติ
+- [ ] file tree, path, commands, incremental code และ full final state ของไฟล์ที่แตะในทุกบท
+- [ ] คำสั่ง verify และ expected result ในทุกบทที่มี code หรือ command
+- [ ] exercises และ solutions ภาษาไทยพร้อมคำตอบครบ
+- [ ] AI prompts พร้อมคำอธิบายภาษาไทยและคำเตือนไม่ copy แบบไม่เข้าใจ
+- [ ] common mistakes ภาษาไทยที่อธิบายอาการ สาเหตุ debug fix และการป้องกัน
+- [ ] final project ภาษาไทยพร้อม solution walkthrough และ full final state
+- [ ] ไม่มี TODO, placeholder, outline-only lesson หรือคำสั่งให้เปิด source repository เองเพื่อหา code ที่จำเป็น
+- [ ] folder structure แสดงได้ด้วย directory listing
 
-For a tiny repository, the course may be shorter, but it must still be complete and file-based.
+สำหรับ repository ที่เล็กมาก คอร์สอาจมีจำนวนน้อยบทลงได้ แต่ต้องยังเป็นคอร์สแบบ file-based ที่ทำตามได้ครบ
 
-## Common Mistakes
+## ข้อผิดพลาดที่ต้องหลีกเลี่ยง
 
-| Mistake | Why it fails | Fix |
+| สิ่งที่ทำผิด | ทำไมจึงไม่พอ | วิธีแก้ |
 |---|---|---|
-| Generating only a roadmap | The learner cannot learn from titles alone. | Write every lesson file fully. |
-| Asking whether to continue after each lesson | The skill requires one complete course run. | Keep generating files until complete. |
-| Skipping repository analysis | Lessons become generic and ungrounded. | Create `00-repository-analysis.md` before lessons. |
-| Translating technical terms unnaturally | Thai developers expect common English terms. | Keep common technical terms in English. |
-| Starting with architecture diagrams | Beginners do not yet feel the problem. | Start with simple working code, then refactor. |
-| Pasting large code blocks | Students get lost. | Use small blocks with line-by-line explanations. |
-| Empty support folders | Output structure exists but course is incomplete. | Add useful exercise, solution, prompt, mistake, and final-project files. |
+| สร้างแค่ roadmap | ผู้เรียนเรียนจากชื่อบทอย่างเดียวไม่ได้ | เขียนทุก lesson file ให้ครบ |
+| ถามว่าจะสร้างบทถัดไปหรือไม่ | คอร์สต้องเสร็จในรอบเดียว | เขียนไฟล์ให้ครบจนจบ |
+| ข้าม repository analysis | บทเรียนจะกลายเป็น generic และไม่ตรง project | สร้าง `00-repository-analysis.md` ก่อน lessons |
+| แปลศัพท์เทคนิคตรงตัว | ภาษาไทยฟังแปลกและไม่ตรงศัพท์งานจริง | คง technical terms ที่ทีมพัฒนาใช้จริง |
+| ปล่อย prose หรือหัวข้อทั่วไปเป็นอังกฤษ | ผู้เรียนไทยอ่านสะดุดและได้คอร์สกึ่งแปล | เขียนหัวข้อและคำอธิบายเป็นไทยธรรมชาติ |
+| บอกให้เปิด repository เอง | ผู้เรียนทำตามไม่ได้จากคอร์สเพียงอย่างเดียว | ฝัง code, path และ full final state ไว้ในบท |
+| บอกว่า file ใหญ่เกินจะแสดง | ผู้เรียนประกอบ final state ไม่ครบ | สอนผ่าน block เล็ก แล้วรวม full final state ท้ายบท |
+| วาง code block ใหญ่โดยไม่อธิบาย | ผู้เรียนจำได้แต่ยังไม่เข้าใจ | แบ่ง code และอธิบายเหตุผล ผลเมื่อเอาออก และข้อผิดพลาด |
+| สร้าง supporting directories เปล่า | มี structure แต่คอร์สยังไม่สมบูรณ์ | ใส่ exercise, solution, prompt, mistake และ final project ที่ใช้งานได้จริง |
 
-## Final Student Outcome
+## ผลลัพธ์ที่ผู้เรียนควรรู้สึก
 
-The final course should leave the learner feeling:
+คอร์สที่เสร็จแล้วต้องทำให้ผู้เรียนรู้สึกว่า:
 
 - ฉันเข้าใจว่า project นี้ทำอะไร
 - ฉันเข้าใจว่า architecture นี้เกิดขึ้นมาเพื่อแก้ปัญหาอะไร
