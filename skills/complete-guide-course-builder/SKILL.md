@@ -1,6 +1,6 @@
 ---
 name: complete-guide-course-builder
-description: "Use when converting a GitHub open-source repository into a full Thai Complete Guide course with repository analysis, complete modules, complete lessons, exercises, solutions, AI prompts, branch checkpoints, debugging, testing, production, and deployment guidance."
+description: "Use when converting a GitHub open-source repository into a full Thai Complete Guide course with repository analysis, complete modules, complete lessons, exercises, solutions, AI prompts, copy-ready checkpoint files, debugging, testing, production, and deployment guidance."
 ---
 
 # Complete Guide Course Builder
@@ -38,7 +38,7 @@ Collect or infer these inputs before generating the course:
 | Target output directory | Yes | Default: `complete-guide/`. |
 | Target learner level | Optional | Default: beginner-to-intermediate Thai software developer. |
 | Course scope | Optional | Default: full repository, focused on important learning concepts. |
-| Branch/checkpoint naming style | Optional | Default: `lesson-01-start`, `lesson-01-finished`, etc. |
+| Checkpoint folder naming style | Optional | Default: `module-01-lesson-01-start`, `module-01-lesson-01-finished`, etc. |
 | Runtime constraints | Optional | Capture package manager, language runtime, database, env vars, ports, and OS notes. |
 
 If the repository is inaccessible, stop with the exact missing prerequisite. Do not invent repository contents.
@@ -138,7 +138,7 @@ complete-guide/
   00-repository-analysis.md
   01-course-roadmap.md
   02-module-plan.md
-  03-branch-checkpoints.md
+  03-checkpoints.md
 ```
 
 ### Required Course Sections
@@ -179,7 +179,7 @@ Lessons must progress easy to hard.
 2. ทำ inventory ของไฟล์และอ่านเฉพาะส่วนที่เกี่ยวข้อง
 3. สร้าง `00-repository-analysis.md` เป็นภาษาไทย
 4. วางลำดับ module จากแนวคิดจริงของ project ไม่ใช่จาก template สำเร็จรูป
-5. สร้าง roadmap, module plan และ branch checkpoints
+5. สร้าง roadmap, module plan และ checkpoint snapshots ที่เป็นไฟล์จริง
 6. สร้างทุก module directory และทุก lesson file ให้ครบ
 7. ทำให้ทุกบทอ่านและลงมือทำตามได้ด้วยตัวเอง โดยไม่ต้องเปิด source repository ควบคู่
 8. สร้างไฟล์ใน `exercises/`, `solutions/`, `ai-prompts/`, `common-mistakes/` และ `final-project/` พร้อมเนื้อหาจริง
@@ -205,7 +205,7 @@ Lessons must progress easy to hard.
 
 | สิ่งที่ผู้เรียนต้องได้ | รูปแบบบังคับ |
 |---|---|
-| จุดเริ่มต้น | branch/checkpoint และโครงสร้างไฟล์ที่เกี่ยวข้องก่อนเริ่ม |
+| จุดเริ่มต้น | path ของ checkpoint folder ที่ copy ได้ และโครงสร้างไฟล์ที่เกี่ยวข้องก่อนเริ่ม |
 | ขั้นตอนทำ | path, คำสั่ง, code ทีละส่วน และคำอธิบายภาษาไทย |
 | Code จาก repository | คัดเฉพาะส่วนที่จำเป็นมาไว้ในบท พร้อม source path และ commit/tag |
 | สภาพหลังทำ | เนื้อหาเต็มล่าสุดของทุกไฟล์ที่สร้างหรือแก้ในบท |
@@ -221,7 +221,7 @@ Lessons must progress easy to hard.
 
 ## เป้าหมายของบทเรียน
 
-## เริ่มจาก branch ไหน
+## เริ่มจาก checkpoint ไหน
 
 ## โครงสร้างไฟล์ก่อนเริ่ม
 
@@ -261,7 +261,7 @@ Lessons must progress easy to hard.
 ### ความหมายของแต่ละหัวข้อ
 
 - `เป้าหมายของบทเรียน`: บอกสิ่งที่ผู้เรียนทำหรืออธิบายได้เมื่อจบบท
-- `เริ่มจาก branch ไหน`: ระบุ `lesson-NN-start` หรือชื่อ checkpoint แบบ module-scoped
+- `เริ่มจาก checkpoint ไหน`: ระบุ path เช่น `checkpoints/module-01-lesson-02-start/project/` พร้อมคำสั่ง copy ที่ใช้ได้จริง
 - `โครงสร้างไฟล์ก่อนเริ่ม`: แสดง file tree ของไฟล์ที่บทนี้ใช้และสถานะที่ผู้เรียนควรมี
 - `เริ่มจากปัญหา`: เริ่มจาก pain ที่เกิดจริง ไม่เริ่มจาก syntax
 - `Mental model`: อธิบาย concept แบบเป็นธรรมชาติ ใช้ analogy เฉพาะเมื่อช่วยให้เข้าใจ
@@ -277,7 +277,7 @@ Lessons must progress easy to hard.
 - `เฉลยแบบละเอียด`: มี code หรือคำตอบสมบูรณ์ เหตุผล วิธีตรวจ และตัวอย่างแนวทางที่มักผิด
 - `สภาพไฟล์ฉบับสมบูรณ์ท้ายบท`: แสดง full final state ของทุกไฟล์ที่สร้างหรือแก้ในบท แม้บางช่วงจะซ้ำกับ code ที่สอนไปแล้ว
 - `วิธีตรวจสอบผล`: ระบุคำสั่ง run/build/test/debug, expected output และวิธีแยก warning ที่ยอมรับได้ออกจาก failure
-- `Checkpoint ที่ควรได้`: ระบุ `lesson-NN-finished` หรือชื่อ checkpoint แบบ module-scoped
+- `Checkpoint ที่ควรได้`: ระบุ path เช่น `checkpoints/module-01-lesson-02-finished/project/` และวิธีเปรียบเทียบหรือ copy state นั้น
 
 ## กฎการใส่ code และ file state
 
@@ -286,7 +286,7 @@ Lessons must progress easy to hard.
 3. หลังทุก block อธิบายเป็นภาษาไทยว่า code ทำอะไร ทำไมต้องมี ถ้าเอาออกจะเกิดอะไร และ beginner มักพลาดอย่างไร
 4. Code ทุกส่วนที่จำเป็นต่อ compile, run, test หรือ debug ต้องอยู่ในคอร์ส ห้ามแทนด้วยลิงก์หรือคำสั่งว่า “เปิด repository แล้วดูเอง”
 5. หาก upstream file ใหญ่มาก ให้สร้าง teaching version ที่เล็กแต่ runnable ก่อน แล้วค่อยแสดง excerpt จาก upstream ที่จำเป็นพร้อม context ครบ
-6. ท้ายบทต้องรวม full final state ของทุกไฟล์ที่แตะในบท ผู้เรียนต้อง copy หรือพิมพ์ตามแล้วได้ state เดียวกับ checkpoint ได้
+6. ท้ายบทต้องรวม full final state ของทุกไฟล์ที่แตะในบท และต้องสร้าง checkpoint snapshot ที่ copy แล้วได้ state เดียวกัน
 7. ไฟล์ที่ไม่ได้แก้ในบทไม่ต้องคัดซ้ำ แต่ต้องบอก dependency และชี้ไปบทก่อนหน้าที่มี full state ของไฟล์นั้น
 
 ## Red Flags: หยุดและแก้ก่อนสร้างไฟล์ต่อ
@@ -361,28 +361,47 @@ code ที่ทำงานได้
 อย่าเริ่มด้วย architecture ขั้นสูง เว้นแต่เป็นบท architecture deep-dive และบทก่อนหน้าได้สร้างบริบทที่จำเป็นครบแล้ว.
 
 
-## Branch and Checkpoint System
+## Checkpoint Snapshot System
 
-Every lesson must include:
+ทุก lesson ต้องสร้าง checkpoint เป็นไฟล์จริงใต้ course folder ไม่ใช่ Git branch, tag, patch, diff, symlink หรือ reference ไปยัง repository ภายนอก
 
-```txt
-Start from branch: lesson-03-start
-```
-
-At the end:
+สำหรับทุก lesson ให้สร้าง snapshot อย่างน้อยสอง state:
 
 ```txt
-Your code should now match branch: lesson-03-finished
+complete-guide/
+  checkpoints/
+    module-03-lesson-02-start/
+      README.md
+      project/
+        ...source tree ที่ใช้เริ่มบท...
+    module-03-lesson-02-finished/
+      README.md
+      project/
+        ...source tree หลังจบบท...
 ```
 
-For large courses, prefix with module number if clearer:
+กฎของ snapshot:
+
+- `project/` ต้องเป็น source tree ที่สมบูรณ์และใช้ได้จริงสำหรับ state นั้น ไม่ใช่เฉพาะไฟล์ที่เปลี่ยน
+- ผู้เรียนต้องสามารถ copy `project/` ไปยัง working directory ใหม่แล้ว run/build/test ตามคำสั่งของบทได้ โดยไม่ต้อง checkout Git branch หรือ tag
+- ไม่รวม `.git/`, secret จริง หรือไฟล์ build output ที่สร้างซ้ำได้; คงไฟล์ปกติที่จำเป็น เช่น source, config, lockfile, migration, fixture, `.env.example` และ test
+- ทุก `README.md` ต้องบอกหมายเลขบท, state (`start` หรือ `finished`), สิ่งที่ต่างจาก checkpoint ก่อนหน้า, คำสั่ง copy และคำสั่ง verify พร้อม expected result
+- หาก start state ซ้ำกับ finished state ของบทก่อนหน้า ต้องยังสร้าง folder จริงของ start state เพื่อให้ค้นหาและ copy ได้โดยตรง
+
+ตัวอย่างใน lesson:
 
 ```txt
-module-05-lesson-03-start
-module-05-lesson-03-finished
+เริ่มจาก: checkpoints/module-03-lesson-02-start/project/
+copy: cp -R checkpoints/module-03-lesson-02-start/project/. ./my-project/
 ```
 
-`03-branch-checkpoints.md` must list every checkpoint and what changed at that checkpoint.
+ตอนจบบท:
+
+```txt
+Checkpoint ที่ควรได้: checkpoints/module-03-lesson-02-finished/project/
+```
+
+`03-checkpoints.md` ต้องเป็นดัชนีของ checkpoint ทุกตัว โดยระบุ path, บทเรียน, state, รายการไฟล์ที่เปลี่ยน, คำสั่ง copy และคำสั่ง verify ของ checkpoint นั้น
 
 ## File Output Structure
 
@@ -393,7 +412,15 @@ complete-guide/
   00-repository-analysis.md
   01-course-roadmap.md
   02-module-plan.md
-  03-branch-checkpoints.md
+  03-checkpoints.md
+
+  checkpoints/
+    module-01-lesson-01-start/
+      README.md
+      project/
+    module-01-lesson-01-finished/
+      README.md
+      project/
 
   modules/
     module-01-introduction/
@@ -504,7 +531,7 @@ Supporting directories must contain useful files, not empty placeholders.
 
 - โจทย์และบริบทการใช้งานเป็นภาษาไทย
 - requirements และ acceptance criteria ที่ตรวจได้
-- branch plan
+- checkpoint plan และ checkpoint folders ที่ copy ได้จริง
 - โครงสร้างไฟล์เริ่มต้นและไฟล์ฉบับเต็มที่ผู้เรียนต้องสร้าง
 - คำใบ้เป็นลำดับจากน้อยไปมาก
 - เฉลยหรือ solution walkthrough ภาษาไทย พร้อม full final state และคำสั่ง verify
@@ -526,7 +553,7 @@ Supporting directories must contain useful files, not empty placeholders.
 - [ ] ทุกบทมีแบบฝึกหัดและเฉลยสมบูรณ์ที่ตรวจได้
 - [ ] common mistakes มีสาเหตุ วิธี debug วิธีแก้ และวิธีป้องกัน
 - [ ] AI coding workflow สอนให้ตรวจคำตอบ ไม่ copy แบบไม่เข้าใจ
-- [ ] branch checkpoints ครบและเทียบ code ได้
+- [ ] checkpoint snapshots เป็นไฟล์จริงครบทุกบท ค้นหา เปรียบเทียบ และ copy ได้โดยไม่ต้องใช้ Git branch หรือ tag
 - [ ] ไม่มี TODO, placeholder, outline-only lesson หรือข้อความให้รอตอนถัดไป
 
 ## ตัวอย่างการใช้งาน
@@ -563,7 +590,8 @@ https://github.com/octocat/Hello-World
 - [ ] `complete-guide/00-repository-analysis.md`
 - [ ] `complete-guide/01-course-roadmap.md`
 - [ ] `complete-guide/02-module-plan.md`
-- [ ] `complete-guide/03-branch-checkpoints.md`
+- [ ] `complete-guide/03-checkpoints.md`
+- [ ] `complete-guide/checkpoints/` ที่มี `README.md` และ `project/` จริงสำหรับ start และ finished state ของทุก lesson
 - [ ] module อย่างน้อยหนึ่ง directory ใต้ `complete-guide/modules/`
 - [ ] lesson files ที่มีหัวข้อบังคับครบและมีคำอธิบายภาษาไทยธรรมชาติ
 - [ ] file tree, path, commands, incremental code และ full final state ของไฟล์ที่แตะในทุกบท
