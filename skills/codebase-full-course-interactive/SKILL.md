@@ -1,3 +1,8 @@
+---
+name: codebase-full-course-interactive
+description: Turn a pinned software repository revision into a source-grounded interactive developer course with structured lessons, execution traces, diagrams, quizzes, labs, and a standalone static React Course Repository.
+---
+
 # Codebase Full Course Interactive
 
 ## Identity
