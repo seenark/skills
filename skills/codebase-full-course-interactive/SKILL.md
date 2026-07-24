@@ -37,26 +37,25 @@ Scripts are deterministic only: acquisition checks, indexing, diffing, impact an
 7. **Update safely.** For an old/new commit, run update planning and impact analysis. Classify artifacts `unaffected`, `verify`, `regenerate`, or `invalid`; invalidate stale approval when meaning changes; refresh research and reports before rendering.
 8. **Migrate separately.** Engine/schema migration is independent of a source update and must emit a migration report, then rerun tests, content validation, typecheck, and build.
 
-### Stable commands
+### Available MVP commands
 
-Run from the Course Repository (or the skill package when exercising its fixture):
+Run from the skill package:
 
 ```bash
-bun run course research:init
-bun run course research:validate
-bun run course research:approve
-bun run course generate:plan
-bun run course generate:validate
-bun run course review
-bun run course update:plan
-bun run course update:validate
-bun run course engine:migrate
+bun install
+bun run course --help
+bun run course research:validate --input examples/example-course/research/bundle.json
+bun run course generate:validate --input examples/example-course/course.json
+bun run course source:validate --input examples/example-course/course.json --source-root ../..
+bun run course update:impact --old <commit> --new <commit> --repo <path>
 bun run typecheck
 bun run test
 bun run build
 ```
 
-Each workflow refuses missing, stale, mismatched, or unresolved inputs; deterministic validation cannot grant approval. Use the phase playbooks in `playbooks/` for the required handoff and review sequence.
+The MVP currently implements deterministic validation and impact commands. The research-init, approval, generation-plan, review, update-plan, update-validation, and Engine-migration workflows remain documented playbook contracts and are not yet executable CLI commands.
+
+Use the phase playbooks in `playbooks/` for the required research, authoring, review, update, and migration handoffs.
 
 ## Content and Course Engine contract
 
