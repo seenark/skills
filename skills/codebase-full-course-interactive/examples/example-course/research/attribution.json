@@ -1,0 +1,11 @@
+{
+  "repositoryUrl": "https://github.com/seenark/skills",
+  "browserUrl": "https://github.com/seenark/skills/tree/3af0c9059c764d7b2fe39a07cf5a78a5a399fcd7/skills/codebase-full-course-interactive/examples/fixture-repository",
+  "project": "Course Fixture Pipeline",
+  "authors": ["skills repository contributors"],
+  "license": "MIT",
+  "licenseEvidence": "skills/codebase-full-course-interactive/examples/fixture-repository/package.json",
+  "status": "resolved",
+  "commit": "3af0c9059c764d7b2fe39a07cf5a78a5a399fcd7",
+  "displayText": "Course Fixture Pipeline — MIT — seenark/skills"
+}

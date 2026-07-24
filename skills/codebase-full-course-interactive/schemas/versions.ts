@@ -1,0 +1,4 @@
+export const CURRENT_CONTENT_SCHEMA_VERSION = "1.0.0";
+export const CURRENT_RESEARCH_SCHEMA_VERSION = "1.0.0";
+export const CURRENT_ENGINE_VERSION = "0.1.0";
+export const SKILL_VERSION = "0.1.0";

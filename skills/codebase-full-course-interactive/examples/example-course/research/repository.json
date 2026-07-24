@@ -1,0 +1,19 @@
+{
+  "name": "course-fixture-pipeline",
+  "description": "A tiny request validation and dispatch pipeline.",
+  "source": {
+    "repositoryUrl": "https://github.com/seenark/skills",
+    "browserUrl": "https://github.com/seenark/skills/blob/3af0c9059c764d7b2fe39a07cf5a78a5a399fcd7/skills/codebase-full-course-interactive/examples/fixture-repository/src/pipeline.ts",
+    "localPath": "../../fixture-repository",
+    "commit": "3af0c9059c764d7b2fe39a07cf5a78a5a399fcd7",
+    "provider": "github",
+    "pathPrefix": "",
+    "licenseStatus": "resolved",
+    "licenseEvidence": "fixture-repository/package.json declares MIT"
+  },
+  "generatedAt": "2026-07-24T00:00:00.000Z",
+  "packageManager": "bun",
+  "languages": ["TypeScript"],
+  "workspaces": [],
+  "entryPoints": ["src/pipeline.ts"]
+}

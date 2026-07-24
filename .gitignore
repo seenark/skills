@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build and test output
+dist/
+**/dist/
+build/
+**/build/
+coverage/
+.vite/
+**/.vite/
+
+# Generated local reports and caches
+*.tsbuildinfo
+.tmp/
+**/.tmp/
+.cache/
+**/.cache/
+
+# Agent workflow workspace
+.skill-work/
+**/.skill-work/
+.course-work/
+**/.course-work/
+.agent-work/
+**/.agent-work/
+
+# Local review artifacts
+.lavish/
+**/.lavish/
+
+# Local environment and editor files
+.env
+.env.*
+!.env.example
+.DS_Store
+.idea/
+.vscode/
+
+# Temporary source checkouts
+.source-checkouts/
+**/.source-checkouts/

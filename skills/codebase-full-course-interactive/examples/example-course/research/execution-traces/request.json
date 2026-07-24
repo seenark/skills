@@ -1,0 +1,12 @@
+{
+  "id": "request-to-result",
+  "scenario": "A user submits a request containing text.",
+  "observableResult": "The request is either rejected as empty or accepted in uppercase.",
+  "entryPoint": {"repository":"https://github.com/seenark/skills","commit":"3af0c9059c764d7b2fe39a07cf5a78a5a399fcd7","path":"skills/codebase-full-course-interactive/examples/fixture-repository/src/pipeline.ts","startLine":4,"endLine":8,"rangeHash":"34102b9a5c3322bf55a99f96047cef058d28bbcbc3d8cc70371d8fdf512b8bd8","ownership":"PROJECT_BUILT_IN"},
+  "steps": [
+    {"id":"trim","order":1,"action":"Trim request text","data":"request.text","stateChange":"Whitespace is removed","symbolId":"pipeline.handle","source":{"repository":"https://github.com/seenark/skills","commit":"3af0c9059c764d7b2fe39a07cf5a78a5a399fcd7","path":"skills/codebase-full-course-interactive/examples/fixture-repository/src/pipeline.ts","startLine":5,"endLine":5,"rangeHash":"f2d06abb637e4ef099dde245fb809c9be9cb6fd82ec4d443c1c63e66319be1f6","ownership":"PROJECT_BUILT_IN"}},
+    {"id":"branch","order":2,"action":"Check whether text is empty","data":"text.length","stateChange":"Choose rejected or accepted path","symbolId":"pipeline.handle","source":{"repository":"https://github.com/seenark/skills","commit":"3af0c9059c764d7b2fe39a07cf5a78a5a399fcd7","path":"skills/codebase-full-course-interactive/examples/fixture-repository/src/pipeline.ts","startLine":6,"endLine":6,"rangeHash":"15daa7239d8a583582aca99cd1f4108ab976dcac0f36cfc7e6b613d572f0842c","ownership":"PROJECT_BUILT_IN"},"branch":"empty input"},
+    {"id":"dispatch","order":3,"action":"Dispatch accepted text","data":"text","stateChange":"Uppercase result is returned","symbolId":"pipeline.dispatch","source":{"repository":"https://github.com/seenark/skills","commit":"3af0c9059c764d7b2fe39a07cf5a78a5a399fcd7","path":"skills/codebase-full-course-interactive/examples/fixture-repository/src/pipeline.ts","startLine":10,"endLine":12,"rangeHash":"fd00ca87de3eabcfed51578004c5f5e827f0589b2c9824304ed371de759e5bf4","ownership":"PROJECT_BUILT_IN"}}
+  ],
+  "finalResult": "Accepted input is uppercased; empty input returns a rejection."
+}
