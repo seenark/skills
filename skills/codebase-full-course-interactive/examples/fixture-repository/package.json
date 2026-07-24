@@ -1,0 +1,6 @@
+{
+  "name": "course-fixture-pipeline",
+  "private": true,
+  "type": "module",
+  "license": "MIT"
+}
